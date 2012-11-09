@@ -2,37 +2,34 @@ var application = {
 	setup: function(){
 		Zepto('.menu').on('click', 'li', function(){
 			var view = Zepto(this).attr('class'),
-				viewUrl = "";
 			switch(view){
 				case 'accelerometer':
-					viewUrl = 'view/accelerometer.html';
-					Zepto('.content').load(viewUrl);
+					Zepto('.content').load('view/accelerometer.html');
 					api.accelerometer.setup();
 					break;
 				case 'camera':
-					viewUrl = 'view/camera.html';
-					Zepto('.content').load(viewUrl);
+					Zepto('.content').load('view/camera.html');
 					api.camera.capturePhoto();
 					break;
 				case 'compass':
-					viewUrl = 'view/compass.html';
-					Zepto('.content').load(viewUrl);
+					Zepto('.content').load('view/compass.html');
 					api.compass.setup();
 					break;
 				case 'connection':
-					viewUrl = 'view/connection.html';
-					Zepto('.content').load(viewUrl);
+					Zepto('.content').load('view/connection.html');
 					api.connection.setup();
 					break;
 				case 'contacts':
-					viewUrl = 'view/contacts.html';
-					Zepto('.content').load(viewUrl);
+					Zepto('.content').load('view/contacts.html');
 					api.contacts.setup();
 					break;
 				case 'device':
-					viewUrl = 'view/device.html';
-					Zepto('.content').load(viewUrl);
+					Zepto('.content').load('view/device.html');
 					api.device.setup();
+					break;
+				case 'geolocation':
+					Zepto('.content').load('view/geolocation.html');
+					api.geolocation.setup();
 					break;
 				default:
 					alert('ainda não foi implementado :(');
@@ -119,6 +116,20 @@ var api = {
 				Zepto('.uuid').text(window.device.uuid);
 				Zepto('.version').text(window.device.version);
 			}, 500);
+		}
+	},
+	geolocation: {
+		setup: function(){
+			navigator.geolocation.getCurrentPosition(api.geolocation.onSuccess, api.error);
+		},
+		onSuccess: function(position){
+			Zepto('.latitude').text(position.coords.latitude);
+			Zepto('.longitude').text(position.coords.longitude);
+			Zepto('.altitude').text(position.coords.altitude);
+			Zepto('.accuracy').text(position.coords.accuracy);
+			Zepto('.altitude-accuracy').text(position.coords.altitudeAccuracy);
+			Zepto('.heading').text(position.coords.heading);
+			Zepto('.speed').text(position.coords.speed);
 		}
 	}
 };
