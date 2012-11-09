@@ -1,17 +1,39 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="zepto.js"></script>
-	<script type="text/javascript">
-	document.addEventListener("deviceready", init, false);
-	function init(){
-		alert('starting!');
-	}
-	</script>
-</head>
-<body>
-</body>
+	<head>
+	    <meta charset="utf-8">
+		<title>Phonegap API Test</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="style.css">
+	  	<script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+		<script type="text/javascript" charset="utf-8" src="zepto.js"></script>
+		<script type="text/javascript" charset="utf-8" src="script.js"></script>
+		<script>
+			document.addEventListener("deviceready", start, false);
+			function start(){
+				application.setup();			
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<ul class="menu">
+				<li class="accelerometer">Accelerometer API</li>
+				<li class="camera">Camera API</li>
+				<li>Capture API</li>
+				<li class="compass">Compass API</li>
+				<li>Connection API</li>
+				<li>Contacts API</li>
+				<li>Device API</li>
+				<li>Events API</li>
+				<li>File API</li>
+				<li>Geolocation API</li>
+				<li>Globalization API</li>
+				<li>Media API</li>
+				<li>Notification API</li>
+				<li>Splashscreen API</li>
+				<li>Storage API</li>
+			</ul>
+		</div>
+	</body>
 </html>
